@@ -11,7 +11,7 @@ const UsuarioController = require("./controllers/UsuarioController");
 const login = require(".//middleware/login");
 
 routes
-  .get("/imoveis", login, ImovelController.index)
+  .get("/imoveis", ImovelController.index)
   .get("/destaques", DestaqueController.index)
   .get("/pesquisar/:filtro", PesquisarController.index)
   .get("/imoveis/estatistica", EstatisticaController.index)
