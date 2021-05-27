@@ -51,8 +51,8 @@ module.exports = {
 
     // validação para os campos
     if (!email || !senha) {
-            res.status(400).json({ erro: "Enviar email, senha do usuário" });
-      //res.status(400).json({ erro: "Login ou senha incorretos" });
+            //res.status(400).json({ erro: "Enviar email, senha do usuário" });
+      res.status(400).json({ erro: "Login ou senha incorretos" });
       return;
     }
 
@@ -61,9 +61,9 @@ module.exports = {
       const dados = await knex("usuarios").where({ email });
 
       if (dados.length == 0) {
-               res.status(400).json({ erro: "E-mail inválido" });
+               //res.status(400).json({ erro: "E-mail inválido" });
 
-        //res.status(400).json({ erro: "Login ou senha incorretos" });
+        res.status(400).json({ erro: "Login ou senha incorretos" });
         return;
       }
 
@@ -82,9 +82,9 @@ module.exports = {
 
         res.status(200).json({ msg: "Ok! Acesso Liberado", token });
       } else {
-        res.status(400).json({ erro: "Senha Incorreta" });
+        //res.status(400).json({ erro: "Senha Incorreta" });
 
-        //res.status(400).json({ erro: "Login ou senha incorretos" });
+        res.status(400).json({ erro: "Login ou senha incorretos" });
       }
     } catch (error) {
       res.status(400).json({ erro: error.message });
