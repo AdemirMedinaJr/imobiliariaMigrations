@@ -61,7 +61,11 @@ module.exports = {
       const dados = await knex("usuarios").where({ email });
 
       if (dados.length == 0) {
+<<<<<<< HEAD
               //res.status(400).json({ erro: "E-mail inválido" });
+=======
+               //res.status(400).json({ erro: "E-mail inválido" });
+>>>>>>> 53f71c92757211960fc51225fde904da7f988d53
 
         res.status(400).json({ erro: "Login ou senha incorretos" });
         return;

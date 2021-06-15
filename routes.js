@@ -16,7 +16,10 @@ const login = require(".//middleware/login");
 
 routes
   .get("/imoveis", ImovelController.index)
+<<<<<<< HEAD
   .get("/tipos", TipoController.index)
+=======
+>>>>>>> 53f71c92757211960fc51225fde904da7f988d53
   .get("/destaques", DestaqueController.index)
   .get("/pesquisar/:filtro", PesquisarController.index)
   .get("/imoveis/estatistica", EstatisticaController.index)
