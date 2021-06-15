@@ -22,7 +22,7 @@ routes
   .get("/imoveis/estatistica", EstatisticaController.index)
   .put("/destacar/:id", DestacarController.update)
   .post("/proposta/:id",login, PropostaController.store)
-  .post("/imoveis",login, ImovelController.store);
+  .post("/imoveis", ImovelController.store);
 
 routes
   .get("/usuarios", UsuarioController.index)
