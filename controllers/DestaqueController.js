@@ -24,7 +24,6 @@ module.exports = {
         "i.nº_banheiros",
         "i.preco",
         "i.foto",
-        "i.destaque",
       )
 
       .from("imoveis as i")
@@ -36,10 +35,10 @@ module.exports = {
 
   async store(req, res) {
     // faz a desestruturação do objeto req.body
-    const { cidade, imovel_id, bairro, area, nº_quartos, nº_banheiros, preco, foto, destaque} = req.body;
+    const { cidade, imovel_id, bairro, area, nº_quartos, nº_banheiros, preco, foto} = req.body;
 
     // validação para os campos
-    if ( !cidade || !imovel_id || !bairro || !area || !nº_quartos || !nº_banheiros || !preco || !foto || !destaque) {
+    if ( !cidade || !imovel_id || !bairro || !area || !nº_quartos || !nº_banheiros || !preco || !foto) {
       res.status(400).json({
         erro: "Enviar cidade, imovel_id, bairro, área, nº de quartos, nº de banheiros, preço e foto do imóvel",
       });
@@ -56,7 +55,6 @@ module.exports = {
         nº_banheiros,
         preco,
         foto,
-        destaque,
       });
       res.status(201).json({ id: novo[0] });
     } catch (error) {
