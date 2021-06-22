@@ -54,7 +54,7 @@ module.exports = {
         nº_quartos,
         nº_banheiros,
         preco,
-        foto,
+        foto
       });
       res.status(201).json({ id: novo[0] });
     } catch (error) {
