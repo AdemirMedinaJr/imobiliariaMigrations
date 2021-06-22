@@ -23,7 +23,8 @@ module.exports = {
         "i.nº_quartos",
         "i.nº_banheiros",
         "i.preco",
-        "i.foto"
+        "i.foto",
+        "i.destaque"
       )
 
       .from("imoveis as i")
