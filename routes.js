@@ -2,7 +2,7 @@ const express = require("express");
 const routes = express.Router();
 const cors = require("cors");
 
-routes.use(cors()); // libera todas as rotas para acesso por origens diferentes
+routes.use(cors()); // libera todas as rotas para acesso(s) por origens diferentes
 
 const DestacarController = require("./controllers/DestacarController");
 const DestaqueController = require("./controllers/DestaqueController");
