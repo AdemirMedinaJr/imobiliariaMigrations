@@ -15,17 +15,22 @@ const TipoController = require("./controllers/TipoController");
 const login = require(".//middleware/login");
 
 routes
-  .get("/imoveis", ImovelController.index)
   .get("/tipos", TipoController.index)
-  .get("/tipos_imoveis", TipoController.tipos_imoveis)
-  .get("/destaques", DestaqueController.index)
-  .get("/pesquisar/:filtro", PesquisarController.index)
-  .get("/imoveis/estatistica", EstatisticaController.index)
-  .put("/destacar/:id", DestacarController.update)
-  .put("/imoveis/destaque/:id", ImovelController.search)
-  .post("/proposta/:id",login, PropostaController.store)
+  .get("/tipos_imoveis", TipoController.tipos_imoveis);
+
+routes
+  .get("/imoveis", ImovelController.index)
   .post("/imoveis", ImovelController.store)
-  .delete("/imoveis/:id", ImovelController.destroy)
+  .put("/imoveis/destaque/:id", ImovelController.destaque)
+  .get("/imoveis/destaques", ImovelController.destaques)
+  //.get("/destaques", DestaqueController.index)
+  .get("/imoveis/pesq/:palavra", ImovelController.search)
+  .get("/imoveis/:id", ImovelController.show)
+  //.get("/pesquisar/:filtro", PesquisarController.index)
+  //.get("/imoveis/estatistica", EstatisticaController.index)
+  //.put("/destacar/:id", DestacarController.update)
+  .post("/proposta/:id", login, PropostaController.store)
+  .delete("/imoveis/:id", ImovelController.destroy);
 
 routes
   .get("/usuarios", UsuarioController.index)
