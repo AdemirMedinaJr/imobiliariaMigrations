@@ -137,7 +137,6 @@ module.exports = {
   async destaque(req, res) {
     const id = req.params.id; // ou:  const { id } = req.params
     dados = await knex("imoveis").where({ id });
-    //    console.log(dados[0]);
 
     if (dados[0].destaque) {
       try {
