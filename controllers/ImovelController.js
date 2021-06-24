@@ -112,10 +112,10 @@ module.exports = {
       !preco ||
       !foto
     )  {
-=======
+
     // validação para os campos
     if ( !cidade || !tipo_id || !bairro || !area || !nº_quartos || !nº_banheiros || !preco || !foto ) {
->>>>>>> f2e5ef016a56224fced036ba1a3022d28d85b4d2
+
       res.status(400).json({
         erro: "Enviar cidade, tipo_id, bairro, área, nº de quartos, nº de banheiros, preço e foto do imóvel",
       });
