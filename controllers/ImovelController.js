@@ -100,7 +100,6 @@ module.exports = {
       return;
     }
 
-<<<<<<< HEAD
     // se algum dos atributos não for passado
     if (
       !cidade ||
