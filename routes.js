@@ -17,12 +17,15 @@ const login = require(".//middleware/login");
 routes
   .get("/imoveis", ImovelController.index)
   .get("/tipos", TipoController.index)
+  .get("/tipos_imoveis", TipoController.tipos_imoveis)
   .get("/destaques", DestaqueController.index)
   .get("/pesquisar/:filtro", PesquisarController.index)
   .get("/imoveis/estatistica", EstatisticaController.index)
   .put("/destacar/:id", DestacarController.update)
+  .put("/imoveis/destaque/:id", ImovelController.search)
   .post("/proposta/:id",login, PropostaController.store)
-  .post("/imoveis", ImovelController.store);
+  .post("/imoveis", ImovelController.store)
+  .delete("/imoveis/:id", ImovelController.destroy)
 
 routes
   .get("/usuarios", UsuarioController.index)
