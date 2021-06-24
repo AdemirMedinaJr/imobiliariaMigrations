@@ -73,8 +73,6 @@ module.exports = {
       .from("imoveis as i")
       .leftJoin("tipos as t", "i.tipo_id", "t.id")
       .where("cidade", "like", "%" + palavra + "%")
-      .orwhere("bairro", "like", "%" + palavra + "%")
-      //.orwhere("preco", "like", "%" + palavra + "%")
       .orWhere("t.classe", "like", "%" + palavra + "%")
       .orderBy("i.id", "desc");
     res.status(200).json(imoveis);
