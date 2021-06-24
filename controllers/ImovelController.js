@@ -49,7 +49,7 @@ module.exports = {
 
       .from("imoveis as i")
       .leftJoin("tipos as t", "i.tipo_id", "t.id")
-      .orderBy("i.id", "desc");
+      .orderBy("i.id", id);
 
     res.status(200).json(imovel[0]);
   },
