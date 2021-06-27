@@ -7,6 +7,28 @@ module.exports = {
   // show: retornar 1 registro
   // destroy: exclusão
 
+  async destaques(req, res) {
+    const imoveis = await knex
+      .select(
+        "i.id",
+        "i.cidade",
+        "t.classe as tipo",
+        "i.bairro",
+        "i.area",
+        "i.nº_quartos",
+        "i.nº_banheiros",
+        "i.preco",
+        "i.foto",
+        "i.destaque"
+      )
+      .from("imoveis as i")
+      .leftJoin("tipos as t", "i.tipo_id", "t.id")
+      .where("i.destaque", true)
+      .orderBy("i.id", "desc");
+    res.status(200).json(imoveis);
+  },
+
+
   async index(req, res) {
     //const carros = await knex("carros").orderBy("id", "desc");
     // const carros = await knex("carros")

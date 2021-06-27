@@ -7,8 +7,18 @@ module.exports = {
   // show: obter 1 registro
   // destroy: exclusão
 
+  async update(req, res) {
+    const id = req.params.id;
+    const { preco, cidade, bairro, area, nº_quartos, nº_banheiros } = req.body;
+    try {
+      await knex("imoveis").update({ preco, cidade, bairro, area, nº_quartos, nº_banheiros }).where({ id });
+      res.status(200).json();
+    } catch (error) {
+      res.status(400).json({ msg: error.message });
+    }
+  },
+
   async index(req, res) {
-  
     const imoveis = await knex
       .select(
         "i.id",
@@ -46,11 +56,9 @@ module.exports = {
         "i.foto",
         "i.destaque"
       )
-
       .from("imoveis as i")
       .leftJoin("tipos as t", "i.tipo_id", "t.id")
-      .orderBy("i.id", id);
-
+      .where("i.id", id);
     res.status(200).json(imovel[0]);
   },
 
@@ -72,8 +80,13 @@ module.exports = {
       )
       .from("imoveis as i")
       .leftJoin("tipos as t", "i.tipo_id", "t.id")
-      .where("cidade", "like", "%" + palavra + "%")
-      .orWhere("t.classe", "like", "%" + palavra + "%")
+      .where("t.classe", "like", "%" + palavra + "%")
+      .orWhere("preco", "like", "%" + palavra + "%")
+      .orWhere("cidade", "like", "%" + palavra + "%")
+      .orWhere("bairro", "like", "%" + palavra + "%")
+      .orWhere("area", "like", "%" + palavra + "%")
+      .orWhere("nº_quartos", "like", "%" + palavra + "%")
+      .orWhere("nº_banheiros", "like", "%" + palavra + "%")
       .orderBy("i.id", "desc");
     res.status(200).json(imoveis);
   },
@@ -175,7 +188,7 @@ module.exports = {
       )
       .from("imoveis as i")
       .leftJoin("tipos as t", "i.tipo_id", "t.id")
-      .where("c.destaque", true)
+      .where("i.destaque", true)
       .orderBy("i.id", "desc");
     res.status(200).json(imoveis);
   },
@@ -192,25 +205,3 @@ module.exports = {
     }
   },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
