@@ -22,6 +22,8 @@ routes
   .get("/imoveis", ImovelController.index)
   .get("/imoveis/pesq/:palavra", ImovelController.search)
   .get("/imoveis/destaques", ImovelController.destaques)
+  .get("/imoveis/destaques/:id", ImovelController.show)
+  .get("/imoveis/destaques/:id", ImovelController.trazerFoto)
   .get("/imoveis/:id", ImovelController.show)
   .get("/propostas", PropostaController.index)
   .get("/propostas/:id", PropostaController.show)
