@@ -11,18 +11,9 @@ module.exports = {
     const id = req.params.id;
     const { preco, cidade, bairro, area, nº_quartos, nº_banheiros } = req.body;
     try {
-      await knex("imoveis").update({ preco, cidade, bairro, area, nº_quartos, nº_banheiros }).where({ id });
-      res.status(200).json();
-    } catch (error) {
-      res.status(400).json({ msg: error.message });
-    }
-  },
-
-  async trazerFoto(req, res) {
-    const id = req.params.id;
-    const { foto } = req.body;
-    try {
-      await knex("imoveis").show({ foto }).where({ id });
+      await knex("imoveis")
+        .update({ preco, cidade, bairro, area, nº_quartos, nº_banheiros })
+        .where({ id });
       res.status(200).json();
     } catch (error) {
       res.status(400).json({ msg: error.message });
@@ -213,6 +204,18 @@ module.exports = {
       res
         .status(400)
         .json({ ok: 0, msg: `Erro na exclusão: ${error.message}` });
+    }
+  },
+
+  async pesqDestaque(req, res) {
+    const { palavra } = req.params;
+    try {
+      const pesqDest = await knex("imoveis")
+        .where("cidade", "like", `%${palavra}%`)
+        .andWhere("destaque", "=", true);
+      res.status(200).json(pesqDest);
+    } catch (error) {
+      res.status(400).json({ msg: error.message });
     }
   },
 };
