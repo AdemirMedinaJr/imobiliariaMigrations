@@ -18,6 +18,17 @@ module.exports = {
     }
   },
 
+  async trazerFoto(req, res) {
+    const id = req.params.id;
+    const { foto } = req.body;
+    try {
+      await knex("imoveis").show({ foto }).where({ id });
+      res.status(200).json();
+    } catch (error) {
+      res.status(400).json({ msg: error.message });
+    }
+  },
+
   async index(req, res) {
     const imoveis = await knex
       .select(
